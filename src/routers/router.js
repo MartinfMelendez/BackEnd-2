@@ -1,12 +1,12 @@
 import { Router } from "express";
-import userRouter from "./user.router/user.router.js";
+import sessionRouter from "./sesion.router/session.router.js";
 import eventsRouter from "./events.router/events.router.js";
 import health from "./health.router.js";
 
 
 const router = Router();
 
-router.use("/users", userRouter)
+router.use("/sessions", sessionRouter)
 router.use("/events", eventsRouter)
 router.use('/health', health)
 
