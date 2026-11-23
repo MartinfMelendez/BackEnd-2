@@ -5,12 +5,7 @@ class EventsMongo {
     async getAll() {
         return await Events.find().lean();
     }
-    getById(id) {
-        if (!mongoose.Types.ObjectId.isValid(id)) {
-            throw new Error("ID inválido");
-        }
-        return Events.findById(id).lean();
-    }
+
 }
 
 

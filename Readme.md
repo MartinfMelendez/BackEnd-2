@@ -17,6 +17,9 @@ En esta primera etapa se prepara la estructura para los siguientes recursos:
 - **JavaScript ES Modules (ESM):** sistema de módulos mediante `import` y `export`.
 - **dotenv:** gestión de variables de entorno.
 - **Nodemon:** reinicio automático del servidor durante el desarrollo.
+- **MongoDB:** base de datos NoSQL.
+- **Mongoose:** modelado y conexión con MongoDB.
+
 
 ## 📦 Instalación
 
@@ -90,6 +93,7 @@ BackEnd-2/
 |   |      ├──events.mongo.js
 │   ├── models/
 │   │   ├── events.model.js
+|   |   ├── users.model.js
 │   ├── middlewares/
 |   |   ├──errorHandler.js
 │   └── utils/

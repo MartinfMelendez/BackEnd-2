@@ -6,10 +6,4 @@ export default class EventsRepository {
     async getAll() {
         return await eventsRepository.getAll();
     }
-    async getById(id) {
-        if (!id) {
-            throw new Error("ID inválido");
-        }
-        return await eventsRepository.getById(id);
-    }
 }

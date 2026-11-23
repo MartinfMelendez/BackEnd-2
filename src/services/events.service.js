@@ -5,9 +5,4 @@ async function getAll() {
     return await eventsRepository.getAll();
 }
 
-async function getById(id) {
-    const eventsRepository = new EventsRepository();
-    return await eventsRepository.getById(id);
-}
-
-export { getAll, getById }
+export { getAll }
