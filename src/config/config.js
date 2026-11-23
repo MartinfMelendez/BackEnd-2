@@ -1,6 +1,6 @@
 import { config } from "dotenv";
 config();
-const variablesRequeridas = ["PORT"]
+const variablesRequeridas = ["PORT", "MONGO_URL"]
 
 for (let variable of variablesRequeridas) {
     if (!process.env[variable]) {
@@ -10,5 +10,6 @@ for (let variable of variablesRequeridas) {
 
 
 export default {
-    PORT: process.env.PORT
+    PORT: process.env.PORT,
+    MONGO_URL: process.env.MONGO_URL
 }

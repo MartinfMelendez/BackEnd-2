@@ -9,13 +9,11 @@ Construir la estructura base de una API REST aplicando una arquitectura en capas
 En esta primera etapa se prepara la estructura para los siguientes recursos:
 
 - **Events:** estructura inicial para la gestión de eventos.
-- **Sessions:** estructura inicial para las sesiones de usuario, sin implementar autenticación todavía.
-- **Users:** modelo base para representar a los usuarios de la plataforma.
 
 ## 🛠️ Tecnologías utilizadas
 
 - **Node.js:** entorno de ejecución de JavaScript.
-- **Express 5:** framework para desarrollar la API REST.
+- **Express :** framework para desarrollar la API REST.
 - **JavaScript ES Modules (ESM):** sistema de módulos mediante `import` y `export`.
 - **dotenv:** gestión de variables de entorno.
 - **Nodemon:** reinicio automático del servidor durante el desarrollo.
@@ -46,10 +44,6 @@ Crear un archivo `.env` en la raíz del proyecto, tomando como referencia `.env.
 
 ```env
 PORT=8080
-NODE_ENV=development
-MONGO_URL=mongodb://127.0.0.1:27017/eventos
-JWT_SECRET=clave_secreta_para_desarrollo
-```
 
 **Importante:** los valores son de ejemplo. La conexión a MongoDB y la autenticación con JWT corresponden a futuras implementaciones; no implica que estén activas en esta primera entrega. No subir el archivo `.env` al repositorio.
 
@@ -81,17 +75,23 @@ BackEnd-2/
 │   ├── app.js
 │   ├── server.js
 │   ├── config/
+│   │   ├──config.js
+|   |   ├──database.config.js 
 │   ├── routes/
 │   │   ├── events.router.js
 │   │   └── sessions.router.js
 │   ├── controllers/
+|   |   ├──events.controller.js
 │   ├── services/
+|   |   ├──events.service.js
 │   ├── repositories/
 │   ├── dao/
+|   |   ├──mongo
+|   |      ├──events.mongo.js
 │   ├── models/
-│   │   ├── User.js
-│   │   └── Event.js
+│   │   ├── events.model.js
 │   ├── middlewares/
+|   |   ├──errorHandler.js
 │   └── utils/
 ├── .env
 ├── .env.example
@@ -155,15 +155,6 @@ Respuesta esperada:
 
 Código HTTP esperado: `200 OK`.
 
-### 3. Sesiones de usuario
-
-**Base de ruta:** `/api/sessions`
-
-Se prepara la estructura de rutas y controladores para futuras funcionalidades relacionadas con las sesiones de usuario.
-
-La autenticación, el inicio de sesión y la emisión de tokens no forman parte del alcance de esta primera entrega.
-
-> Nota: las respuestas anteriores describen el comportamiento esperado según las consignas. Para considerarlas endpoints disponibles, las rutas y los controladores correspondientes deben estar implementados y registrados en la aplicación.
 
 ## 🔐 Seguridad y configuración
 
@@ -176,26 +167,8 @@ Las variables previstas para la evolución del proyecto son:
 | `PORT` | Puerto en el que escucha el servidor. |
 | `NODE_ENV` | Entorno de ejecución, por ejemplo `development`. |
 | `MONGO_URL` | Cadena de conexión prevista para MongoDB. |
-| `JWT_SECRET` | Clave prevista para firmar tokens JWT. |
 
 El archivo `.gitignore` excluye `.env` y `node_modules` para evitar publicar credenciales y dependencias instaladas.
-
-## 🚀 Próximas etapas
-
-El proyecto está preparado para evolucionar progresivamente con las siguientes funcionalidades:
-
-- Completar la arquitectura en capas.
-- Incorporar persistencia de datos con MongoDB.
-- Desarrollar las operaciones de gestión de eventos.
-- Implementar el registro y la autenticación de usuarios.
-- Agregar validaciones y middlewares.
-- Incorporar gestión de errores y respuestas estandarizadas.
-
-## 📚 Alcance de esta entrega
-
-Esta pre-entrega se centra en la refactorización arquitectónica inicial, la configuración de Express, la separación entre `app.js` y `server.js`, la preparación de los recursos `events` y `sessions` y la documentación necesaria para ejecutar el proyecto.
-
----
 
 **Proyecto académico — Backend II**  
 Repositorio: [BackEnd-2](https://github.com/MartinfMelendez/BackEnd-2)
