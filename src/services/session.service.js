@@ -1,5 +1,5 @@
 import SessionRepository from "../repository/session.repository.js";
-
+import { createHash } from "../utils/password.js";
 class SessionService {
     constructor() {
         this.repository = new SessionRepository()
@@ -14,6 +14,8 @@ class SessionService {
             throw new Error('La contraseña debe contener 8 o mas caracteres')
         }
         const emailNormalizado = email.toLowerCase().trim()
+        const pass = password.trim()
+        const passHash = await createHash(pass)
 
         const existe = await this.repository.getByEmail(emailNormalizado)
         console.log({
@@ -29,7 +31,7 @@ class SessionService {
             firstName: firstName.trim().toLowerCase(),
             lastName: lastName.trim().toLowerCase(),
             email: emailNormalizado,
-            password: password.trim()
+            password: passHash
         }
 
         const newUser = await this.repository.create(usuarioNormalizado)
