@@ -19,6 +19,7 @@ En esta primera etapa se prepara la estructura para los siguientes recursos:
 - **Nodemon:** reinicio automático del servidor durante el desarrollo.
 - **MongoDB:** base de datos NoSQL.
 - **Mongoose:** modelado y conexión con MongoDB.
+- **bcrypt** para hashear y compara contraseñas
 
 
 ## 📦 Instalación
@@ -47,6 +48,8 @@ Crear un archivo `.env` en la raíz del proyecto, tomando como referencia `.env.
 
 ```env
 PORT=8080
+MONGO_URI=mONGO_URI
+NODE_ENV=development
 
 **Importante:** los valores son de ejemplo. La conexión a MongoDB y la autenticación con JWT corresponden a futuras implementaciones; no implica que estén activas en esta primera entrega. No subir el archivo `.env` al repositorio.
 
@@ -63,7 +66,7 @@ Este comando utiliza Nodemon para reiniciar automáticamente la aplicación cuan
 Una vez iniciado el servidor, se podrá acceder a la API en:
 
 ```text
-http://localhost:8080
+http://localhost:8080/api
 ```
 
 El puerto utilizado dependerá del valor configurado en la variable de entorno `PORT`.
@@ -159,6 +162,47 @@ Respuesta esperada:
 
 Código HTTP esperado: `200 OK`.
 
+### 3. Listado de Usuarios
+
+**GET** `/api/session`
+
+Endpoint inicial para consultar los usuarios creados. En esta etapa devuelve un listado con los usuarios creados sin mostrar el rol y la contraseña de los usuarios.
+
+Respuesta esperada:
+
+```json
+{"status":"Success","payload":[
+  {"firstName":"juan","lastName":"pérez","email":"juan.perez@example.com"},
+  {"firstName":"juan","lastName":"pérez","email":"perez.juan@example.com"},{
+    "firstName":"martin","lastName":"melendez","email":"martinz@example.com"}]
+}
+```
+
+Código HTTP esperado: `200 OK`.
+
+### 3. Listado de Usuarios
+
+**POST** `/api/session/register`
+
+Endpoint utilizado para la creacion de usuarios nuevos. 
+En este endpoint ademas de crear los usuarios se validan que los datos que se ingresan esten completos, asi como tambien se normaliza el email para guardarlo en la base de datos. 
+Con respecto a la contraseña a traves de bcrypt se realizar un hash para evitar la contraseña en texto plano.
+Al devolver la respuesta al cliente solo se devuelven los datos relevantes para el, ocultando de esta forma el rol y la contraseña creada.
+
+Respuesta esperada:
+
+```json
+{"status":"Success","playload":{"firstName":"juan","lastName":"pérez","email":"juan.perez@example.com"}}
+```
+Código HTTP esperado: `201 Created`.
+
+Respuesta esperada en caso de que el mail ya se encuentre registrado:
+
+```json
+{"success":false,"errorName":"APIError","message":"Email ya se encuentra registrado"}
+```
+
+Código HTTP esperado: `409 Conflict`.
 
 ## 🔐 Seguridad y configuración
 
