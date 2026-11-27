@@ -82,24 +82,38 @@ BackEnd-2/
 │   ├── server.js
 │   ├── config/
 │   │   ├──config.js
-|   |   ├──database.config.js 
+|   |   └──database.config.js 
 │   ├── routes/
-│   │   ├── events.router.js
-│   │   └── sessions.router.js
+│   │   ├── router.js
+│   │   ├── health.router.js
+│   │   ├── events.router
+│   │   |     └── events.router.js
+│   │   ├── sessions.router
+│   │   |     └── sessions.router.js
 │   ├── controllers/
 |   |   ├──events.controller.js
+|   |   └──session.controller.js
 │   ├── services/
 |   |   ├──events.service.js
+|   |   └──session.service.js
 │   ├── repositories/
-│   ├── dao/
+|   |   ├──events.repository.js
+|   |   ├──manager.repository.js
+|   |   └──session.repository.js
+│   ├── DAO/
 |   |   ├──mongo
-|   |      ├──events.mongo.js
-│   ├── models/
-│   │   ├── events.model.js
-|   |   ├── users.model.js
+|   |   |   ├──events.mongo.js
+|   |   |   ├──manager.mongo.js
+|   |   |   └──user.mongo.js
+│   |   └── models/
+│   │       ├──events.model.js
+|   |       └──users.model.js
 │   ├── middlewares/
 |   |   ├──errorHandler.js
+|   |   └──notFound.middleware.js
 │   └── utils/
+|   |   ├──APIErrors.js
+|       └──password.js
 ├── .env
 ├── .env.example
 ├── .gitignore

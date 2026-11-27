@@ -1,4 +1,4 @@
-import EventsRepository from '../repository/events.repository.js'
+import EventsRepository from '../repositories/events.repository.js'
 class EventsServices {
     constructor() {
         this.repository = new EventsRepository();

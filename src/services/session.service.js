@@ -1,4 +1,4 @@
-import SessionRepository from "../repository/session.repository.js";
+import SessionRepository from "../repositories/session.repository.js";
 import { createHash } from "../utils/password.js";
 import APIError from "../utils/APIErrors.js";
 class SessionService {
