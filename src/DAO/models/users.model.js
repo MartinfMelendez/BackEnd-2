@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    nombreCompleto: {
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
         type: String,
         required: true
     },
@@ -19,6 +23,7 @@ const userSchema = new mongoose.Schema({
         enum: ["admin", "user", "organizer"],
         default: "user"
     }
-});
+},
+    { timestamps: true });
 
 export default mongoose.model("User", userSchema)
