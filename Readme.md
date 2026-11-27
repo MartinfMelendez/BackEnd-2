@@ -194,7 +194,7 @@ Respuesta esperada:
 
 Código HTTP esperado: `200 OK`.
 
-### 3. Listado de Usuarios
+### 4. Listado de Usuarios
 
 **POST** `/api/session/register`
 
