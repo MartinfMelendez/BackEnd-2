@@ -7,4 +7,7 @@ export default class SessionRepository {
     async getAll() {
         return await userMongo.getAll()
     }
+    async getByEmail(email) {
+        return await userMongo.getByEmail(email)
+    }
 }
