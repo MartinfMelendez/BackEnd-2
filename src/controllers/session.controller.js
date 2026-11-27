@@ -3,7 +3,7 @@ class SessionController {
     async getAll(req, res, next) {
         try {
             const users = await sessionService.getAll()
-            res.status(200).json({ "status": "getAllSession", "payload": users })
+            res.status(200).json({ "status": "Success", "payload": users })
         } catch (error) {
             next(error)
         }
@@ -13,7 +13,7 @@ class SessionController {
         try {
             const data = req.body
             const newUser = await sessionService.create(data)
-            res.status(201).json({ "status": "create", "playload": newUser })
+            res.status(201).json({ "status": "Success", "playload": newUser })
         } catch (error) {
             next(error)
         }

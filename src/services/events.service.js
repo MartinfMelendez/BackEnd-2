@@ -4,7 +4,7 @@ class EventsServices {
         this.repository = new EventsRepository();
     }
     async getAll() {
-        return await this.repository.getAll();
+        return await this.repository.getAll()
     }
 }
 

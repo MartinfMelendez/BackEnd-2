@@ -46,8 +46,12 @@ class SessionService {
 
     async getAll() {
         const allUser = await this.repository.getAll();
-        console.log(allUser)
-        return allUser
+
+        return allUser.map(user => ({
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email
+        }))
     }
 }
 
