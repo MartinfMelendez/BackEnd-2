@@ -178,7 +178,7 @@ Código HTTP esperado: `200 OK`.
 
 ### 3. Listado de Usuarios
 
-**GET** `/api/session`
+**GET** `/api/sessions`
 
 Endpoint inicial para consultar los usuarios creados. En esta etapa devuelve un listado con los usuarios creados sin mostrar el rol y la contraseña de los usuarios.
 
