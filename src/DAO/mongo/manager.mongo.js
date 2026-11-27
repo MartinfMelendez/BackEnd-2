@@ -5,7 +5,7 @@ class ManagerMongo {
 
 
     async create(document) {
-        await this.model.create(document);
+        return await this.model.create(document);
     }
 
     async getAll() {

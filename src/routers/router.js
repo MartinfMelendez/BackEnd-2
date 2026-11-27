@@ -9,6 +9,7 @@ const router = Router();
 
 
 router.use("/events", eventsRouter)
+router.use('/sessions', sessionsRouter)
 router.use('/health', health)
 
 export default router

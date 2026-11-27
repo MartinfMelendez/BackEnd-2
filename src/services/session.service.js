@@ -1,4 +1,4 @@
-import SessionRepository from "../repository/session.repository";
+import SessionRepository from "../repository/session.repository.js";
 
 class SessionService {
     constructor() {
@@ -10,16 +10,29 @@ class SessionService {
         if (!firstName || !lastName || !email || !password) {
             throw new Error('Todos los campos son obligatorios')
         }
-        if (password.length >= 8) {
+        if (password.length <= 8) {
             throw new Error('La contraseña debe contener 8 o mas caracteres')
         }
         const emailNormalizado = email.toLowerCase().trim()
 
         const existe = await this.repository.getByEmail(emailNormalizado)
-        if (!existe) {
+        console.log({
+            "existe:": existe,
+            "enviado:": emailNormalizado
+        })
+
+
+        if (existe) {
             throw new Error('Email ya registrado')
         }
-        const newUser = await this.repository.create(firstName.trim().toLowerCase(), lastName.trim().toLowerCase(), emailNormalizado, password.trim())
+        const usuarioNormalizado = {
+            firstName: firstName.trim().toLowerCase(),
+            lastName: lastName.trim().toLowerCase(),
+            email: emailNormalizado,
+            password: password.trim()
+        }
+
+        const newUser = await this.repository.create(usuarioNormalizado)
 
         return {
             firstName: newUser.firstName,
@@ -28,6 +41,14 @@ class SessionService {
         }
 
     }
+
+    async getAll() {
+        const allUser = await this.repository.getAll();
+        console.log(allUser)
+        return allUser
+    }
 }
 
-export default SessionService;
+const sessionService = new SessionService();
+
+export default sessionService;
