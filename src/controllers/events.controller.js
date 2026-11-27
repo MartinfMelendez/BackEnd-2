@@ -1,15 +1,15 @@
-import { getAll } from "../services/events.service.js"
 
-async function getAllEvents(req, res, next) {
+import eventsServices from "../services/events.service.js";
 
-    try {
-        const events = await getAll();
-
-        res.status(200).json({ "status": "success", "payload": events });
+class EventsController {
+    async getAllEvents(req, res, next) {
+        try {
+            const events = await eventsServices.getAll();
+            res.status(200).json({ "status": "success", "payload": events });
+        } catch (error) {
+            next(error);
+        }
     }
-    catch (error) { next(error) }
-
 }
 
-
-export { getAllEvents }
+export default new EventsController();

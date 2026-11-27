@@ -1,12 +1,10 @@
-import mongoose from "mongoose";
-import { Events } from "../models/events.model.js";
+import ManagerMongo from "./manager.mongo.js";
+import Events from '../models/events.model.js'
 
-class EventsMongo {
-    async getAll() {
-        return await Events.find().lean();
+class EventsMongo extends ManagerMongo {
+    constructor() {
+        super(Events);
     }
 
 }
-
-
 export default EventsMongo

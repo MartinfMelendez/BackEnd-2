@@ -6,6 +6,6 @@ const server = app
 
 
 server.listen(env.PORT, () => {
-    console.log(`Server on http://localhost:${env.PORT}/api`)
     conectDB();
+    console.log(`Server on http://localhost:${env.PORT}/api`)
 })

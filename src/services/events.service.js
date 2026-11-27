@@ -1,8 +1,13 @@
-import EventsRepository from "../repository/events.repository.js";
-
-async function getAll() {
-    const eventsRepository = new EventsRepository();
-    return await eventsRepository.getAll();
+import EventsRepository from '../repository/events.repository.js'
+class EventsServices {
+    constructor() {
+        this.repository = new EventsRepository();
+    }
+    async getAll() {
+        return await this.repository.getAll();
+    }
 }
 
-export { getAll }
+const eventsServices = new EventsServices();
+
+export default eventsServices;
