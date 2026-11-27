@@ -1,12 +1,9 @@
-const errorHandler = (err, req, res, next) => {
-    console.error(err.stack);
-    console.log("STATUS CODE:", err.statusCode);
-    const statusCode = err.statusCode || 500;
-
-    res.status(statusCode).json({
-        status: "error",
-        message: err.message || "Error interno del servidor"
+const errorHanddler = (err, req, res, next) => {
+    res.status(err.statusCode || 500).json({
+        success: false,
+        errorName: err.name || "Internal",
+        message: err.message || "Internal Server Error"
     });
 };
 
-export default errorHandler;
+export default errorHanddler;
